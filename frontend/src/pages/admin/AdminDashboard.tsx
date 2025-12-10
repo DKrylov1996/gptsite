@@ -11,7 +11,7 @@ import {
   updateCollection
 } from '../../api/collections'
 import type { YearCollection } from '../../types'
-import CollectionForm from '../../components/admin/CollectionForm'
+import { CollectionForm } from '../../components/admin/CollectionForm'
 
 export function AdminDashboard () {
   const queryClient = useQueryClient()

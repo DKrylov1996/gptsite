@@ -24,7 +24,7 @@ const emptyAlbum = (rank: number): Album => ({
   reviewSnippet: ''
 })
 
-function CollectionForm ({ mode, initialCollection, onSubmit, onCancel }: Props) {
+export function CollectionForm ({ mode, initialCollection, onSubmit, onCancel }: Props) {
   const [collection, setCollection] = useState<YearCollection>(() => {
     if (initialCollection) {
       return JSON.parse(JSON.stringify(initialCollection))
@@ -46,8 +46,7 @@ function CollectionForm ({ mode, initialCollection, onSubmit, onCancel }: Props)
       if (field === 'genres') {
         nextAlbum.genres = value.split(',').map(item => item.trim()).filter(Boolean)
       } else {
-        // @ts-ignore
-          nextAlbum[field] = value
+        nextAlbum[field] = value
       }
       albums[index] = nextAlbum
       return { ...prev, albums }
@@ -263,5 +262,3 @@ function CollectionForm ({ mode, initialCollection, onSubmit, onCancel }: Props)
     </form>
   )
 }
-
-export default CollectionForm
