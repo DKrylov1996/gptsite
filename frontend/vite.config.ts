@@ -8,14 +8,20 @@ export default defineConfig(({ mode }) => {
     server: {
       port: Number(env.VITE_DEV_SERVER_PORT || 5173),
       host: true,
+      allowedHosts: [  // ← ДОБАВИТЬ ЭТО
+        'topoftheyear.ru',
+        '.topoftheyear.ru',  // поддомены
+        'localhost',
+        '192.168.1.105'
+      ],
       hmr: {
-        host: '192.168.1.105',  // ← ВАШ IP
+        host: '192.168.1.105',
         port: 5173
       },
-      cors: true,  // ← Разрешить CORS
-      proxy: {     // ← Прокси для API
+      cors: true,
+      proxy: {
         '/api': {
-          target: 'http://192.168.1.105:4000',  // ← ВАШ IP
+          target: 'http://192.168.1.105:4000',
           changeOrigin: true,
           secure: false
         }
